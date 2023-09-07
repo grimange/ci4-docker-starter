@@ -91,6 +91,19 @@ libpng-dev && \
     docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg && \
     docker-php-ext-install gd
 
+# Install Sendmail
+#RUN apt-get install -q -y ssmtp mailutils
+#
+#RUN line=$(head -n 1 /etc/hosts) \
+#	&& line2=$(echo $line | awk '{print $2}') \
+#	&& echo "$line $line2.localdomain" >> /etc/hosts \
+#	&& apt install --fix-missing -y sendmail sendmail-cf m4 \
+#    && hostname >> /etc/mail/relay-domains \
+#    && m4 /etc/mail/sendmail.mc > /etc/mail/sendmail.cf \
+#    && sed -i -e "s/Port=smtp,Addr=127.0.0.1, Name=MTA/Port=smtp, Name=MTA/g" \
+#    /etc/mail/sendmail.mc \
+#	&& sendmail -bd
+
 # Insure an SSL directory exists
 RUN mkdir -p /etc/apache2/ssl
 
